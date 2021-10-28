@@ -1,4 +1,5 @@
 import pluginFactory from "taoTests/runner/plugin";
+import __ from 'i18n';
 
 /**
  * Returns the configured plugin
@@ -12,8 +13,8 @@ export default pluginFactory({
 
     this.button = areaBroker.getToolbox().createEntry({
       control: "autoSave",
-      text: "Auto Save",
-      title: "Auto Save",
+      text: __('Auto Save'),
+      title: __('Auto Save'),
       icon: "clock",
     });
 
@@ -31,7 +32,7 @@ export default pluginFactory({
             testMap.parts[testPartId].sections[sectionId].items[itemIdentifier]
               .categories;
 
-          window.endTime = new Date().getTime() + 300000;
+          window.endTime = new Date().getTime() + 180000; //autosave every 3 minutes
 
           //if(categories.includes('autoSave')){
           self.show();
@@ -46,11 +47,11 @@ export default pluginFactory({
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             document.querySelector('li[data-control="autoSave"]').innerHTML =
-              "Autosave in " + minutes + "m " + seconds + "s";
+            __('Autosave in') + " " + minutes + "m " + seconds + "s";
 
             if (distance == 0) {
               document.querySelector('li[data-control="autoSave"]').innerHTML =
-                "Autosaving..";
+              __('Autosaving..');
               window.clearInterval(window.timer);
               self
                 .getTestRunner()

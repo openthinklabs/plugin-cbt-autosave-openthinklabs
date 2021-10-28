@@ -1,4 +1,5 @@
 import pluginFactory from "taoTests/runner/plugin";
+import __ from 'i18n';
 
 /**
  * Returns the configured plugin
@@ -12,8 +13,8 @@ export default pluginFactory({
 
     this.button = areaBroker.getToolbox().createEntry({
       control: "saveQuestion",
-      text: "Save Question",
-      title: "Save Question",
+      text: __('Save Question'),
+      title: __('Save Question'),
       icon: "Save",
     });
 
