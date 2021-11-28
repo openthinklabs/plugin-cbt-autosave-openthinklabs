@@ -35,6 +35,9 @@ export default pluginFactory({
           window.endTime = new Date().getTime() + 180000; //autosave every 3 minutes
 
           //if(categories.includes('autoSave')){
+
+          //if allow skip enable, hide the button #UKP requirement
+          $('[data-control=skip]').hide();          
           self.show();
 
           window.timer = setInterval(function () {
