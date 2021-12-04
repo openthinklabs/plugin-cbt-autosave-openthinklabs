@@ -32,12 +32,15 @@ export default pluginFactory({
             testMap.parts[testPartId].sections[sectionId].items[itemIdentifier]
               .categories;
 
-          window.endTime = new Date().getTime() + 180000; //autosave every 3 minutes
+          window.endTime = new Date().getTime() + 300000; //autosave every 5 minutes
 
           //if(categories.includes('autoSave')){
 
           //if allow skip enable, hide the button #UKP requirement
-          $('[data-control=skip]').hide();          
+          if($('[data-control=skip]').length) {
+            $('[data-control=skip]').remove();
+          }
+          
           self.show();
 
           window.timer = setInterval(function () {
