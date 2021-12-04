@@ -52,16 +52,18 @@ export default pluginFactory({
             );
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.querySelector('li[data-control="autoSave"]').innerHTML =
-            __('Autosave in') + " " + minutes + "m " + seconds + "s";
-
-            if (distance == 0) {
+            if(document.querySelector('li[data-control="autoSave"]')) {
               document.querySelector('li[data-control="autoSave"]').innerHTML =
-              __('Autosaving..');
-              window.clearInterval(window.timer);
-              self
-                .getTestRunner()
-                .jump(self.getTestRunner().getTestContext()["itemPosition"]);
+              __('Autosave in') + " " + minutes + "m " + seconds + "s";
+
+              if (distance == 0) {
+                document.querySelector('li[data-control="autoSave"]').innerHTML =
+                __('Autosaving..');
+                window.clearInterval(window.timer);
+                self
+                  .getTestRunner()
+                  .jump(self.getTestRunner().getTestContext()["itemPosition"]);
+              }
             }
           });
         } else {
